@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glossario Indicatori — Hermes Agent</title>
+<!--
+  MAPPATURA IMMAGINI (cartella pics/ su GitHub):
+    pics/rsi.png        -> scheda RSI
+    pics/macd.png       -> scheda MACD
+    pics/adx.png        -> scheda ADX
+    pics/sma.png        -> scheda SMA
+    pics/bollinger.png  -> scheda Bollinger
+    pics/stocha.png     -> scheda Stochastic
+    pics/tutti.png      -> immagine panoramica in cima (ASSUNZIONE: spostabile su Triple Screen)
+  Le schede OFAMP, Triple Screen, Capitulation, Ponderazione non hanno immagine dedicata.
+-->
+<style>
+  body{
+    background:#0b0b1a;
+    color:#c0c0e0;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+    line-height:1.65;
+    max-width:820px;
+    margin:0 auto;
+    padding:30px 20px;
+  }
+  a{color:#ffaa44;text-decoration:none}
+  a:hover{text-decoration:underline}
+  .back{font-size:.85em;color:#8888bb;display:inline-block;margin-bottom:12px}
+  .back:hover{color:#ffaa44}
+  h1{
+    color:#d0d0ff;
+    font-size:26pt;
+    border-bottom:3px solid #1a1a5e;
+    padding-bottom:12px;
+    margin-bottom:6px;
+  }
+  .subtitle{color:#8888bb;margin:0 0 4px;font-size:1.02em}
+  .intro{
+    background:#12122e;
+    border:1px solid #1a1a5e;
+    border-radius:10px;
+    padding:16px 20px;
+    margin:22px 0;
+    font-size:.95em;
+    color:#bbbbdd;
+  }
+  .card{
+    background:#12122e;
+    border:1px solid #1a1a5e;
+    border-radius:12px;
+    padding:20px 22px;
+    margin:18px 0;
+  }
+  .card h2{color:#9999cc;font-size:15pt;margin:0 0 2px}
+  .params{font-family:'Courier New',monospace;color:#ffaa44;font-size:.78em;display:block;margin-bottom:6px}
+  .lead{color:#bbbbdd;margin:8px 0 0}
+  figure{margin:16px 0}
+  figure img{
+    width:100%;
+    display:block;
+    border-radius:8px;
+    border:1px solid #2a2a5e;
+    background:#0b0b1a;
+    min-height:60px;
+  }
+  figcaption{font-size:.78em;color:#6666aa;text-align:center;margin-top:6px}
+  .read{margin-top:16px}
+  .read-title{
+    color:#8888bb;
+    font-size:.72em;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    border-bottom:1px solid #1a1a5e;
+    padding-bottom:5px;
+    margin:18px 0 10px;
+  }
+  dl{margin:0}
+  dt{color:#d0d0ff;font-weight:600;margin-top:11px}
+  dd{margin:2px 0 0;color:#c0c0e0}
+  .note{
+    border-left:3px solid #ffaa44;
+    padding:9px 15px;
+    margin:15px 0 0;
+    background:#1a1a2e;
+    font-style:italic;
+    color:#bbbbdd;
+    font-size:.92em;
+  }
+  .note strong{font-style:normal;color:#d0d0ff}
+  table{width:100%;border-collapse:collapse;margin:14px 0 0}
+  th{background:#1a1a3e;color:#8888bb;padding:9px 10px;text-align:left;border-bottom:2px solid #2a2a5e}
+  td{padding:9px 10px;border-bottom:1px solid #1a1a5e;vertical-align:top}
+  .peso{color:#ffaa44;font-weight:bold;white-space:nowrap}
+  .footer{
+    margin-top:38px;
+    padding-top:18px;
+    border-top:1px solid #1a1a5e;
+    font-size:.8em;
+    color:#555577;
+    text-align:center;
+  }
+</style>
+</head>
+<body>
+
+<a class="back" href="index.html">← Torna ai report</a>
+
+<h1>📚 Glossario Indicatori Trading</h1>
+<p class="subtitle">Guida agli indicatori tecnici usati nei report di analisi.</p>
+
+<div class="intro">
+  Ogni scheda spiega <strong>cosa misura</strong> l'indicatore, <strong>come interpretarlo</strong>
+  e <strong>come viene usato</strong> nei nostri report.
+</div>
+
+<!-- ASSUNZIONE: immagine panoramica in cima. Se preferisci, spostala nella scheda Triple Screen. -->
+<figure>
+  <img src="pics/tutti.png" alt="BTC/USDT con tutti gli indicatori applicati">
+  <figcaption>Panoramica — BTC/USDT con tutti gli indicatori applicati (TradingView)</figcaption>
+</figure>
+
+<!-- ============ RSI ============ -->
+<div class="card">
+  <h2>RSI(14)</h2>
+  <span class="params">Relative Strength Index</span>
+  <p class="lead">L'RSI è un oscillatore che misura la <strong>velocità e l'ampiezza dei movimenti di prezzo</strong>
+  nelle ultime 14 candele. Quando le candele sono state prevalentemente rosse (in discesa), l'RSI scende;
+  quando sono state verdi (in salita), sale.</p>
+
+  <figure>
+    <img src="pics/rsi.png" alt="Esempio di RSI su grafico BTC">
+    <figcaption>RSI su BTC/USDT (TradingView)</figcaption>
+  </figure>
+
+  <div class="read">
+    <div class="read-title">Come si legge</div>
+    <dl>
+      <dt>RSI &lt; 20</dt>
+      <dd>Ipervenduto ESTREMO. Evento raro per BTC daily. Negli ultimi 5 anni è successo solo a marzo 2020 (Covid) e novembre 2022 (FTX); in entrambi i casi il prezzo ha fatto un rimbalzo del 50-100% nei 6 mesi successivi. Non è un segnale automatico di acquisto, ma un indicatore di probabilità statistica.</dd>
+      <dt>RSI 20-30</dt>
+      <dd>Ipervenduto. Il mercato è depresso, possibile inversione ma serve conferma da altri indicatori.</dd>
+      <dt>RSI 30-70</dt>
+      <dd>Zona neutra. Il mercato non è né surriscaldato né depresso.</dd>
+      <dt>RSI &gt; 70</dt>
+      <dd>Ipercomprato. Possibile zona di euforia, possibile correzione in arrivo.</dd>
+      <dt>Divergenza</dt>
+      <dd>Se il prezzo fa un nuovo minimo ma l'RSI fa un minimo più alto, il ribasso sta perdendo forza (divergenza rialzista). È uno dei segnali più affidabili.</dd>
+    </dl>
+  </div>
+
+  <div class="note"><strong>Nel nostro report</strong> usiamo il metodo Wilder Smoothed — lo stesso di TradingView — così i valori coincidono con quelli che vedi sui tuoi grafici.</div>
+</div>
+
+<!-- ============ MACD ============ -->
+<div class="card">
+  <h2>MACD(12,26,9)</h2>
+  <span class="params">Moving Average Convergence Divergence</span>
+  <p class="lead">Il MACD confronta due medie mobili esponenziali del prezzo (una veloce a 12 periodi e una lenta a 26)
+  e misura se si stanno avvicinando o allontanando. La Signal line (9 periodi) serve da trigger;
+  l'istogramma mostra la distanza tra MACD e Signal.</p>
+
+  <figure>
+    <img src="pics/macd.png" alt="Esempio di MACD su grafico BTC">
+    <figcaption>MACD su BTC/USDT (TradingView)</figcaption>
+  </figure>
+
+  <div class="read">
+    <div class="read-title">Come si legge</div>
+    <dl>
+      <dt>MACD sopra la Signal line</dt>
+      <dd>Il momentum sta migliorando. Attenzione: <strong>non significa trend rialzista</strong> — MACD e Signal possono essere entrambi profondamente negativi (es. MACD -3.853 / Signal -3.588: sopra la Signal ma ancora in territorio bearish). È un miglioramento del momentum, non un'inversione confermata.</dd>
+      <dt>MACD sopra la Signal line E sopra lo zero</dt>
+      <dd>Trend rialzista CONFERMATO. Solo a questo punto si può parlare di inversione.</dd>
+      <dt>MACD sotto la Signal line</dt>
+      <dd>Il momentum rallenta nella direzione corrente. Se anche sotto zero, il trend è ribassista.</dd>
+      <dt>Istogramma in aumento</dt>
+      <dd>La distanza tra MACD e Signal cresce: il momentum nella direzione corrente si rafforza.</dd>
+      <dt>Istogramma in calo</dt>
+      <dd>La distanza si riduce: il momentum si indebolisce — possibile inversione in arrivo.</dd>
+      <dt>Incrocio MACD sopra Signal + sopra zero</dt>
+      <dd>Inversione rialzista.</dd>
+      <dt>Incrocio MACD sotto Signal + sotto zero</dt>
+      <dd>Inversione ribassista.</dd>
+    </dl>
+  </div>
+
+  <div class="note"><strong>Nota importante.</strong> La posizione rispetto allo zero conta quanto quella rispetto alla Signal. Nei report scriviamo «MACD -3.853 / Signal -3.588 — BEARISH, istogramma in miglioramento»: non scriviamo mai «BUY» quando il MACD è sotto zero, anche se sopra la Signal. Nel Triple Screen il MACD decide il trend principale (Screen 1): se dice ribasso, non si opera in long, punto.</div>
+</div>
+
+<!-- ============ ADX ============ -->
+<div class="card">
+  <h2>ADX(14) + DI</h2>
+  <span class="params">Average Directional Index</span>
+  <p class="lead">L'ADX misura la <strong>forza del trend</strong>, non la direzione. Per sapere chi sta vincendo
+  servono +DI (compratori) e -DI (venditori).</p>
+
+  <figure>
+    <img src="pics/adx.png" alt="Esempio di ADX e DI su grafico BTC">
+    <figcaption>ADX + DI su BTC/USDT (TradingView)</figcaption>
+  </figure>
+
+  <div class="read">
+    <div class="read-title">Come si legge l'ADX</div>
+    <dl>
+      <dt>ADX &lt; 20</dt>
+      <dd>Trend debole o assente. Mercato laterale, in range. Gli oscillatori (RSI, Stochastic) funzionano meglio qui.</dd>
+      <dt>ADX 20-40</dt>
+      <dd>Trend moderato. Il mercato ha una direzione ma senza eccessi.</dd>
+      <dt>ADX &gt; 40</dt>
+      <dd>Trend FORTE. Il mercato si muove deciso: conviene seguire il trend, non cercare inversioni.</dd>
+      <dt>ADX in calo da &gt;40</dt>
+      <dd>Segnale importante: il trend perde forza anche se il prezzo non si è ancora girato (divergenza).</dd>
+    </dl>
+  </div>
+
+  <div class="read">
+    <div class="read-title">Come si leggono +DI e -DI</div>
+    <dl>
+      <dt>+DI &gt; -DI</dt>
+      <dd>I compratori prevalgono. Trend rialzista.</dd>
+      <dt>-DI &gt; +DI</dt>
+      <dd>I venditori prevalgono. Trend ribassista.</dd>
+      <dt>Differenza ampia</dt>
+      <dd>Es. +DI:8 vs -DI:41 — un lato domina nettamente.</dd>
+      <dt>Differenza che si riduce</dt>
+      <dd>Il trend sta cambiando.</dd>
+    </dl>
+  </div>
+</div>
+
+<!-- ============ SMA ============ -->
+<div class="card">
+  <h2>SMA(20/50)</h2>
+  <span class="params">Simple Moving Average</span>
+  <p class="lead">Le medie mobili semplici mostrano il <strong>prezzo medio</strong> degli ultimi 20 e 50 giorni.
+  Sono il modo più diretto per capire se il mercato è in trend rialzista o ribassista.</p>
+
+  <figure>
+    <img src="pics/sma.png" alt="Esempio di SMA 20 e 50 su grafico BTC">
+    <figcaption>SMA 20/50 su BTC/USDT (TradingView)</figcaption>
+  </figure>
+
+  <div class="read">
+    <div class="read-title">Come si legge</div>
+    <dl>
+      <dt>Prezzo sopra SMA20</dt>
+      <dd>Trend rialzista di breve termine (ultime 3 settimane).</dd>
+      <dt>Prezzo sotto SMA20</dt>
+      <dd>Trend ribassista di breve termine.</dd>
+      <dt>SMA20 sopra SMA50 (Golden Cross)</dt>
+      <dd>Incrocio al rialzo: segnale di trend positivo di medio termine.</dd>
+      <dt>SMA20 sotto SMA50 (Death Cross)</dt>
+      <dd>Incrocio al ribasso: segnale di trend negativo di medio termine.</dd>
+      <dt>SMA20 come livello dinamico</dt>
+      <dd>Funge da resistenza in un trend ribassista (il prezzo spesso si ferma lì sui rimbalzi) e da supporto in un trend rialzista.</dd>
+    </dl>
+  </div>
+
+  <div class="note"><strong>Nel report.</strong> «Prezzo SOTTO SMA20 (-8%)» significa che il prezzo è l'8% sotto la media degli ultimi 20 giorni — distanza significativa.</div>
+</div>
+
+<!-- ============ BOLLINGER ============ -->
+<div class="card">
+  <h2>Bollinger Bands(20,2)</h2>
+  <p class="lead">Le Bollinger sono <strong>bande di volatilità</strong> calcolate come SMA20 ± 2 deviazioni standard.
+  Si allargano quando il mercato è volatile, si restringono quando si calma.</p>
+
+  <figure>
+    <img src="pics/bollinger.png" alt="Esempio di Bollinger Bands su grafico BTC">
+    <figcaption>Bollinger Bands su BTC/USDT (TradingView)</figcaption>
+  </figure>
+
+  <div class="read">
+    <div class="read-title">Come si legge</div>
+    <dl>
+      <dt>Bande che si allargano</dt>
+      <dd>La volatilità aumenta. Possibile breakout in una direzione o nell'altra.</dd>
+      <dt>Bande che si restringono</dt>
+      <dd>Il mercato consolida. Di solito precede un movimento significativo.</dd>
+      <dt>Prezzo che tocca la banda inferiore</dt>
+      <dd>Statisticamente ipervenduto. Attenzione: non è un segnale di acquisto automatico — in trend forti il prezzo può cavalcare la banda per giorni.</dd>
+      <dt>Prezzo che tocca la banda superiore</dt>
+      <dd>Ipercomprato.</dd>
+      <dt>%B</dt>
+      <dd>Posizione del prezzo dentro le bande (0% = inferiore, 100% = superiore, 50% = centro). Un %B che sale da valori bassi indica che il prezzo si allontana dai minimi.</dd>
+    </dl>
+  </div>
+
+  <div class="note"><strong>Errore comune da evitare.</strong> Le Bollinger non sono livelli di supporto e resistenza: sono misurazioni statistiche di volatilità.</div>
+</div>
+
+<!-- ============ STOCHASTIC ============ -->
+<div class="card">
+  <h2>Stochastic(14,3)</h2>
+  <span class="params">%K / %D</span>
+  <p class="lead">Lo Stochastic confronta il <strong>prezzo di chiusura</strong> con il <strong>range</strong>
+  (massimo-minimo) degli ultimi 14 periodi. Dice se il mercato ha chiuso vicino ai massimi o ai minimi.</p>
+
+  <figure>
+    <img src="pics/stocha.png" alt="Esempio di Stochastic su grafico BTC">
+    <figcaption>Stochastic %K/%D su BTC/USDT (TradingView)</figcaption>
+  </figure>
+
+  <div class="read">
+    <div class="read-title">Come si legge</div>
+    <dl>
+      <dt>%K (linea veloce) sotto 20</dt>
+      <dd>Ipervenduto. Il prezzo ha chiuso vicino ai minimi del range.</dd>
+      <dt>%K sopra 80</dt>
+      <dd>Ipercomprato. Il prezzo ha chiuso vicino ai massimi.</dd>
+      <dt>%K che sale da sotto 20</dt>
+      <dd>Uscita dall'ipervenduto. Possibile inversione rialzista.</dd>
+      <dt>%K che scende da sopra 80</dt>
+      <dd>Uscita dall'ipercomprato. Possibile inversione ribassista.</dd>
+      <dt>%D (linea lenta, media 3 periodi di %K)</dt>
+      <dd>Conferma il segnale di %K. Quando %K incrocia %D, il segnale si rafforza.</dd>
+    </dl>
+  </div>
+</div>
+
+<!-- ============ OFAMP ============ -->
+<div class="card">
+  <h2>OFAMP — TimesFM 2.5</h2>
+  <p class="lead">OFAMP è la nostra <strong>applicazione basata su TimesFM 2.5</strong>, modello di previsione AI
+  sviluppato da Google (200 milioni di parametri). Gira localmente sul Jetson Orin Nano e analizza i dati storici
+  di Yahoo Finance per produrre una previsione a 30 giorni.</p>
+
+  <div class="read">
+    <div class="read-title">Cosa produce</div>
+    <dl>
+      <dt>Target</dt>
+      <dd>Il valore mediano previsto dal modello per i prossimi 30 giorni.</dd>
+      <dt>Banda Min/Max</dt>
+      <dd>Intervallo di confidenza (circa 80% di probabilità che il prezzo cada in questa fascia).</dd>
+      <dt>Non eventi improvvisi</dt>
+      <dd>TimesFM non prevede shock (guerre, IPO, notizie improvvise). È un modello statistico, non una sfera di cristallo.</dd>
+    </dl>
+  </div>
+
+  <div class="read">
+    <div class="read-title">Come interpretarlo</div>
+    <dl>
+      <dt>Target sopra prezzo attuale</dt>
+      <dd>Il modello vede spazio di crescita.</dd>
+      <dt>Target sotto prezzo attuale</dt>
+      <dd>Il modello vede possibile correzione.</dd>
+      <dt>Prezzo ai bordi della banda</dt>
+      <dd>Il modello assegna bassa probabilità che il prezzo vada oltre.</dd>
+    </dl>
+  </div>
+
+  <div class="note"><strong>Caratteristica importante.</strong> TimesFM è conservativo: in fase di trend forte tende a sottostimare il movimento. Funziona meglio in mercati laterali o di consolidamento.</div>
+</div>
+
+<!-- ============ TRIPLE SCREEN ============ -->
+<div class="card">
+  <h2>Triple Screen</h2>
+  <span class="params">Alexander Elder</span>
+  <p class="lead">Non è un indicatore ma un <strong>metodo di analisi</strong> che combina 3 timeframe per filtrare
+  i segnali falsi. È il cuore della nostra metodologia.</p>
+
+  <div class="read">
+    <div class="read-title">I tre schermi (come usati nei report)</div>
+    <dl>
+      <dt>Screen 1 — Trend (DAILY)</dt>
+      <dd>Usa il MACD per determinare la direzione principale. Decide se possiamo solo comprare, solo vendere, o stare fuori.</dd>
+      <dt>Screen 2 — Oscillatore (4H/1H)</dt>
+      <dd>Usa l'RSI per trovare il momento giusto per entrare, ma solo nella direzione consentita da Screen 1.</dd>
+      <dt>Screen 3 — Esecuzione (4H)</dt>
+      <dd>Candele, volumi, pattern. Dove piazzare lo stop loss.</dd>
+    </dl>
+  </div>
+
+  <div class="note"><strong>La regola più importante.</strong> Mai operare contro Screen 1. Se il MACD dice ribasso (Screen 1 = SELL), non si aprono posizioni long: si aspetta che il trend si giri. Periodo. Quando nel report vedi «Triple Screen: ATTESA», Screen 1 e Screen 2 sono in conflitto (uno dice ribasso, l'altro ipervenduto): si aspetta che si allineino.</div>
+</div>
+
+<!-- ============ CAPITULATION ============ -->
+<div class="card">
+  <h2>Pattern di Capitulation</h2>
+  <p class="lead">La capitulation è un <strong>pattern di fine trend ribassista</strong> che si verifica quando la paura
+  raggiunge il massimo e i venditori esausti lasciano spazio ai compratori.</p>
+
+  <div class="read">
+    <div class="read-title">Elementi del pattern</div>
+    <dl>
+      <dt>RSI &lt; 15 su daily per 2-3 giorni</dt>
+      <dd>La pressione di vendita è estrema e prolungata.</dd>
+      <dt>Prezzo sotto la banda inferiore di Bollinger</dt>
+      <dd>Il mercato è statisticamente fuori dai normali range di volatilità.</dd>
+      <dt>Volume esploso</dt>
+      <dd>Spesso il doppio o il triplo della media giornaliera: segno di una resa dei venditori.</dd>
+      <dt>ADX &gt; 40 con prezzo che smette di scendere</dt>
+      <dd>Trend fortissimo ma senza nuovi minimi (divergenza).</dd>
+      <dt>Rimbalzo successivo</dt>
+      <dd>Il prezzo recupera dal minimo.</dd>
+    </dl>
+  </div>
+
+  <div class="note"><strong>Cosa significa.</strong> Storicamente la capitulation di BTC (marzo 2020 Covid, novembre 2022 FTX) ha segnato il fondo del mercato, con rimbalzi del 50-100% nei 6 mesi successivi. Attenzione: non è un segnale di acquisto immediato — il prezzo può restare depresso per giorni o settimane. Si aspetta che il MACD confermi l'inversione.</div>
+</div>
+
+<!-- ============ PONDERAZIONE ============ -->
+<div class="card">
+  <h2>Ponderazione dei Fattori</h2>
+  <p class="lead">Nel verdetto finale del report, ogni fattore riceve un <strong>peso percentuale</strong> in base alla
+  sua rilevanza nel momento attuale. Questo evita che un singolo indicatore domini la conclusione.</p>
+
+  <table>
+    <thead>
+      <tr><th>Fattore</th><th>Peso</th><th>Perché</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Trend</td><td class="peso">30%</td><td>La direzione del mercato è il fattore singolo più importante</td></tr>
+      <tr><td>Momentum</td><td class="peso">25%</td><td>Misura se il trend sta accelerando o esaurendo</td></tr>
+      <tr><td>OFAMP</td><td class="peso">15%</td><td>Previsione AI 30gg — utile ma non determinante</td></tr>
+      <tr><td>Sentiment</td><td class="peso">15%</td><td>Social, news, Telegram, X — dà contesto</td></tr>
+      <tr><td>Macro</td><td class="peso">15%</td><td>Dollaro, Fed, BCE, geopolitica — rischi esterni</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note"><strong>Riflessione.</strong> Il verdetto include sempre una riflessione sul conflitto tra fattori (es. «dollaro forte vs flussi istituzionali: chi vince?»). Questa analisi qualitativa completa i numeri.</div>
+</div>
+
+<div class="footer">
+  Glossario · Hermes Agent · A scopo educativo — non costituisce consulenza finanziaria
+</div>
+
+</body>
+</html>
